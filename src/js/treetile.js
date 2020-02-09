@@ -21,7 +21,7 @@ class TreeTile {
             this.deleteSelfFromParentChildren(this.parent);
         }
         if (!node.children.includes(this)) {
-            node.children << this
+            node.children.push(this);
         }
         this.parent = node
     }
