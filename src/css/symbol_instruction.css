@@ -1,0 +1,13 @@
+.symbol-index-item{
+    margin-left: 20px;
+}
+.far .fas {
+    right: 1px;
+}
+
+.instruction{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-style: italic;
+}
