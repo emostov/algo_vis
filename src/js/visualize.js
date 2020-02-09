@@ -1,26 +1,72 @@
-const Grid = require('./grid.js');
-const VirtualTree = require('./virtualTree.js')
+// const Grid = require('./grid.js');
+// const VirtualTree = require('./virtualTree.js')
 
 
+class Visualize {
+    constructor(orderedTravesal, travelPath, timeout) {
+        this.orderedTravesal = orderedTravesal
+        this.travelPath = travelPath
+        this.traversed = []
+        this.timeout = timeout
+    }
 
+    visualizeAlgorithm() {
+        let colors = ["red", "yellow", "orange", "purple"]
+        let i = 0;
+        console.log("this is orderedtraversal.length", this.orderedTravesal.length)
+        console.log(this.orderedTravesal)
+        const loopStep = () => {
+            // console.log("i at the top of loopstep:", i)
+            if (i === this.orderedTravesal.length) {
+                this.visualizeTravelPath();
+                return;
+            }
+            let nextPos = this.orderedTravesal[i].parsePos()
+            // Finish the base case for breaking out of the loop
+            setTimeout(() => {
+                const tile = document.getElementById(nextPos)
+                // tile.style.backgroundColor = colors[0]
+                tile.style.backgroundColor = colors[0]
+                colors.rotateRight(1)
+                this.traversed.push(nextPos)
+                loopStep();
+                i = i + 1
+            }, this.timeout);
+        }
+        loopStep();
+    }
 
-function spotTest() {
-    const g = new Grid(10, 10)
-    const v = new VirtualTree(g, [0, 0])
-
-    // console.log(g.adjacentTiles([1, 2]))
-    const t = v.createTree(v.startTile)
-    // console.log(v)
-    const b = new BFS(v.startTile, [6, 6])
-    // console.log(g.board);
-    const endTile = b.breadthFirstSearch()
-    const travelPath = b.createPathBack()
-
-    console.log("ordered traversal is: ", b.orderedTravesal)
-
-    console.log("travel path is: ", b.travelPath)
-
-    // console.log("orderd traversal positions: ", orderedTravesal)
+    visualizeTravelPath() {
+        let i = 0;
+        console.log("hello")
+        const loopStep = () => {
+            if (i === this.travelPath.length) {
+                return
+            }
+            let nextPos = this.travelPath[i].parsePos();
+            setTimeout(() => {
+                const tile = document.getElementById(nextPos)
+                tile.style.backgroundColor = "black"
+                loopStep();
+                i+= 1
+            }, this.timeout);
+        }
+        loopStep();
+    }
 }
 
-spotTest();
+Array.prototype.parsePos = function () {
+    let x = this[0];
+    let y = this[1];
+
+    return `${x}-${y}`
+}
+
+Array.prototype.rotateRight = function (n) {
+    for (let i = 0; i < n; i++) {
+        let color = this.shift()
+        this.push(color);
+    }
+    // return this
+}
+

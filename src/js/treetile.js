@@ -44,4 +44,4 @@ class TreeTile {
   }
 }
 
-module.exports = TreeTile;
+// module.exports = TreeTile;
