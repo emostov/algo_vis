@@ -24,7 +24,7 @@ class Grid {
   }
 
 randomPosGenerator() {
-  // console.log("randomPosGenerator height ", this.height)
+  
   const row = Math.floor(Math.random() * this.height);
   const col = Math.floor(Math.random() * this.width);
   return [row, col];
@@ -32,16 +32,16 @@ randomPosGenerator() {
 
   placeStartTile(pos){
     const tile = this.getTile(pos);
-    // console.log("tile in place start tile: ", tile)
+ 
     tile.color = "white";
   }
 
   getTile(pos){
     let row, col;
     [row, col] = pos;
-    // console.log("position in getTile: ", pos)
+  
     const tile = this.board[row][col];
-    // console.log("tile in getTile", tile)
+    
     return tile
   }
 
@@ -74,7 +74,6 @@ randomPosGenerator() {
   }  
 }
 
-//const Grid = require('./grid.js)
 
 module.exports = Grid;
 
