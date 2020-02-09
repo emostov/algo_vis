@@ -1,4 +1,4 @@
-// const TreeTile = require('./treetile.js');
+const TreeTile = require('./treetile.js');
 
 class Grid {
   constructor(row, col) {
@@ -69,4 +69,4 @@ class Grid {
 }
 
 
-// module.exports = Grid;
+module.exports = Grid;
