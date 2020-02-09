@@ -3,18 +3,19 @@ class TreeTile {
     this.parent = null;
     this.children = [];
     this.color = color;
-    this.pos = pos
+    this.pos = pos;
   }
 
-  changeColor(new_color) {
-    this.color = new_color;
-    return new_color;
+  changeColor(newColor) {
+    this.color = newColor;
+    return newColor;
   }
 
+  // Takes in parent node as argument
   assignParent(node = null) {
     if (node === null) {
-      this.parent = null
-      return null
+      this.parent = null;
+      return null;
     }
 
     if (this.parent !== null) {
@@ -23,24 +24,24 @@ class TreeTile {
     if (!node.children.includes(this)) {
       node.children.push(this);
     }
-    this.parent = node
+    this.parent = node;
+    return node;
   }
 
-  deleteSelfFromParentChildren(parent) {
-    for (let i = 0; i < parent.children.length; i++) {
+  // Delete receiver from the passed in nodes children
+  deleteSelfFromParentChildren(p) {
+    const parent = p;
+    for (let i = 0; i < parent.children.length; i += 1) {
       if (parent.children[i] === this) {
-        let left = parent.children.slice(0, i);
-        let right = parent.children.slice(i + 1);
-        let new_children = left.concat(right);
-        parent.children = new_children
+        const left = parent.children.slice(0, i);
+        const right = parent.children.slice(i + 1);
+        const newChildren = left.concat(right);
+        parent.children = newChildren;
         return parent.children;
       }
     }
-    return -1
+    return -1;
   }
-
-
 }
 
 module.exports = TreeTile;
-
