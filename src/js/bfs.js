@@ -1,5 +1,5 @@
-const VirtualTree = require('./virtualTree.js');
-const Grid = require('./grid.js');
+// const VirtualTree = require('./virtualTree.js');
+// const Grid = require('./grid.js');
 
 class BFS {
   constructor(root, endPos) {
@@ -40,20 +40,4 @@ class BFS {
   }
 }
 
-function spotTest() {
-  const g = new Grid(10, 10);
-  const v = new VirtualTree(g, [0, 0]);
 
-  v.createTree(v.startTile);
-
-  const b = new BFS(v.startTile, [6, 6]);
-
-  b.breadthFirstSearch();
-  b.createPathBack();
-
-  console.log('ordered traversal is: ', b.orderedTravesal);
-
-  console.log('travel path is: ', b.travelPath);
-}
-
-spotTest();

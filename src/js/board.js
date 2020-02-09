@@ -26,14 +26,14 @@ class Board {
     for (let i = 0; i < this.rowLen; i += 3) {
       for (let j = 0; j < this.colLen; j += 3) {
         const curEl = document.getElementById(`${i}-${j}`);
-        const ranNum = (Math.floor((Math.random() * 10) / 1));
-        curEl.classList.add(classes[ranNum]);
+        // const ranNum = (Math.floor((Math.random() * 10) / 1));
+        // curEl.classList.add(classes[ranNum]);
       }
     }
   }
 }
 
-module.exports = Board;
+// module.exports = Board;
 
 // b1 = new Board(30, 75);
 // b1.makeRows();

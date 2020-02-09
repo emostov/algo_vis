@@ -5,7 +5,7 @@
 - VirtualTree: generate a tree based on a specified grid and a starting position. 
 Uses BFS like strategy to create tree started with nearest neighbours. 
 - BFS: accepts a root node (that should be the start tile from the virtual tree)
-and an endPos that is simply coirdinates on the board.
+and an endPos that is simply a cordinate on the board.
 
 
 ## Setting up our linter

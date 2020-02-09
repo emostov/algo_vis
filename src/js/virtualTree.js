@@ -40,4 +40,4 @@ class VirtualTree {
   }
 }
 
-module.exports = VirtualTree;
+// module.exports = VirtualTree;
