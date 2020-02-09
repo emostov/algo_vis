@@ -1,0 +1,31 @@
+.board {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-start;
+}
+
+.grid-row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.grid-item {
+  position: relative;
+  border: 0.1px solid rgb(195, 199, 218);
+  width: 26px;
+  height: 26px;
+}
