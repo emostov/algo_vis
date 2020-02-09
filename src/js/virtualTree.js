@@ -1,13 +1,15 @@
-const Grid = require('./grid.js');
-
+// Virtual Tree class add takes in a grid and grid and start point. Using the 
+// start point as a root it creates a tree representin the grid in a bfs manner.
+// N.B. it creates a tree that is not a graph
+// If not start position is given, one is randomly generated
 class VirtualTree {
   constructor(grid, startPos = null) {
     this.grid = grid;
 
-    this.visited = new Set;
+    this.visited = new Set();
     this.orderedVisit = [];
 
-    this.startPos = (startPos) ? startPos : this.grid.randomPosGenerator();
+    this.startPos = (startPos) || this.grid.randomPosGenerator();
     this.startTile = this.grid.getTile(this.startPos);
     this.grid.placeStartTile(this.startPos);
   }
@@ -20,25 +22,22 @@ class VirtualTree {
   }
 
   createTree(startTile) {
-    let queue = [startTile];
-    this.visited.add(startTile.pos.toString())
+    const queue = [startTile];
+    this.visited.add(startTile.pos.toString());
 
     while (!queue.length < 1) {
-      let curTile = queue.shift()
-      let tiles = this.grid.adjacentTiles(curTile.pos)
-      for (let i = 0; i < tiles.length; i++) {
-
+      const curTile = queue.shift();
+      const tiles = this.grid.adjacentTiles(curTile.pos);
+      for (let i = 0; i < tiles.length; i += 1) {
         if (this.validPos(tiles[i])) {
-          let tile = this.grid.getTile(tiles[i])
-          tile.assignParent(curTile)
-          queue.push(tile)
-          this.visited.add(tile.pos.toString())
+          const tile = this.grid.getTile(tiles[i]);
+          tile.assignParent(curTile);
+          queue.push(tile);
+          this.visited.add(tile.pos.toString());
         }
-
       }
     }
   }
 }
 
-module.exports = VirtualTree
-
+module.exports = VirtualTree;

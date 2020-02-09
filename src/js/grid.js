@@ -1,87 +1,72 @@
 const TreeTile = require('./treetile.js');
 
 class Grid {
-  constructor(row, col){
+  constructor(row, col) {
     // baseline settup - nothing before here
     this.board = new Array(row).fill(null).map(() => new Array(col).fill(null));
     this.height = row;
     this.width = col;
 
-
-    // secondary setup #do not change order
+    // secondary setup
     this.placeTiles();
-
-    // this.tree = this.createTree(startPosition)
   }
 
-  placeTiles(){
-    for(let i=0; i < this.height; i++){
-      for (let j = 0; j < this.width; j++){
-        let newTile = new TreeTile([i, j], "fourtwenty");
+  placeTiles() {
+    for (let i = 0; i < this.height; i += 1) {
+      for (let j = 0; j < this.width; j += 1) {
+        const newTile = new TreeTile([i, j], 'fourtwenty');
         this.board[i][j] = newTile;
       }
     }
   }
 
-randomPosGenerator() {
-  
-  const row = Math.floor(Math.random() * this.height);
-  const col = Math.floor(Math.random() * this.width);
-  return [row, col];
-}
-
-  placeStartTile(pos){
-    const tile = this.getTile(pos);
- 
-    tile.color = "white";
+  randomPosGenerator() {
+    const row = Math.floor(Math.random() * this.height);
+    const col = Math.floor(Math.random() * this.width);
+    return [row, col];
   }
 
-  getTile(pos){
-    let row, col;
-    [row, col] = pos;
-  
+  placeStartTile(pos) {
+    const tile = this.getTile(pos);
+    tile.color = 'white';
+  }
+
+  getTile(pos) {
+    const row = pos[0];
+    const col = pos[1];
     const tile = this.board[row][col];
-    
-    return tile
+    return tile;
   }
 
   validPos(pos) {
-    let p_x = pos[0]
-    let p_y = pos[1]
-    if (p_x < this.height && p_y < this.width && p_x >= 0 && p_y >= 0) {
-      return true
+    const pX = pos[0];
+    const pY = pos[1];
+    if (pX < this.height && pY < this.width && pX >= 0 && pY >= 0) {
+      return true;
     }
+    return false;
   }
 
   adjacentTiles(pos) {
     const deltas = [[1, 0], [-1, 0], [0, 1], [0, -1]];
-    let adjTiles = [];
-    let p_x = pos[0];
-    let p_y = pos[1];
+    const adjTiles = [];
+    const pX = pos[0];
+    const pY = pos[1];
 
-    for(let i = 0; i < deltas.length; i++) {
-        let delt = deltas[i];
-        let d_x = delt[0];
-        let d_y = delt[1];
-        let new_pos_x = p_x + d_x ;
-        let new_pos_y = p_y + d_y;
-        let new_pos = [new_pos_x, new_pos_y];
-        if(this.validPos(new_pos)){
-          adjTiles.push(new_pos);
-        }
+    for (let i = 0; i < deltas.length; i += 1) {
+      const delt = deltas[i];
+      const dX = delt[0];
+      const dY = delt[1];
+      const newPosX = pX + dX;
+      const newPosY = pY + dY;
+      const newPos = [newPosX, newPosY];
+      if (this.validPos(newPos)) {
+        adjTiles.push(newPos);
+      }
     }
-    return adjTiles
-  }  
+    return adjTiles;
+  }
 }
 
 
 module.exports = Grid;
-
-
-
-
-
-
-
-
-
