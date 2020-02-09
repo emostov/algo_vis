@@ -101,18 +101,10 @@ class VirtualTree {
     
     while (!queue.length < 1) {
       let curTile = queue.shift()
-      // console.log("curTile in createTree ", curTile);
       let tiles = this.grid.adjacentTiles(curTile.pos)
-      // console.log("tiles in createTree", tiles)
       for(let i = 0; i < tiles.length; i++) {
-        console.log(tiles[i])
         if(this.validPos(tiles[i])){
-          console.log("vistited in create Trea ", this.visited)
-          // console.log("queue in createTre", this.queue)
-          console.log("valid pos in creatree", tiles[i])
           let tile = this.grid.getTile(tiles[i])
-        
-          // tile.assignParent(curTile)
           tile.parent = curTile
           queue.push(tile)
           this.visited.add(tile.pos.toString())
@@ -129,7 +121,8 @@ function spotTest(){
   const g = new Grid(10, 10)
   const v = new VirtualTree(g)
   // console.log(g.adjacentTiles([1, 2]))
-  console.log(v.createTree(v.startTile));
+  const t = v.createTree(v.startTile)
+  console.log(g.board);
 }
 
 spotTest();
