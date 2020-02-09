@@ -20,7 +20,6 @@ class VirtualTree {
   }
 
   createTree(startTile) {
-    console.log("start tile in createTree", startTile);
     let queue = [startTile];
     this.visited.add(startTile.pos.toString())
 
@@ -41,12 +40,5 @@ class VirtualTree {
   }
 }
 
-spotTest();
+module.exports = VirtualTree
 
-function spotTest() {
-  const g = new Grid(10, 10)
-  const v = new VirtualTree(g, [0, 0])
-  // console.log(g.adjacentTiles([1, 2]))
-  const t = v.createTree(v.startTile)
-  console.log(g.board);
-}
