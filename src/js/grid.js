@@ -1,7 +1,7 @@
 const TreeTile = require('./treetile.js');
 
 class Grid {
-  constructor(row, col){
+  constructor(row, col) {
     // baseline settup - nothing before here
     this.board = new Array(row).fill(null).map(() => new Array(col).fill(null));
     this.height = row;
@@ -14,34 +14,34 @@ class Grid {
     // this.tree = this.createTree(startPosition)
   }
 
-  placeTiles(){
-    for(let i=0; i < this.height; i++){
-      for (let j = 0; j < this.width; j++){
+  placeTiles() {
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
         let newTile = new TreeTile([i, j], "fourtwenty");
         this.board[i][j] = newTile;
       }
     }
   }
 
-randomPosGenerator() {
-  
-  const row = Math.floor(Math.random() * this.height);
-  const col = Math.floor(Math.random() * this.width);
-  return [row, col];
-}
+  randomPosGenerator() {
 
-  placeStartTile(pos){
+    const row = Math.floor(Math.random() * this.height);
+    const col = Math.floor(Math.random() * this.width);
+    return [row, col];
+  }
+
+  placeStartTile(pos) {
     const tile = this.getTile(pos);
- 
+
     tile.color = "white";
   }
 
-  getTile(pos){
+  getTile(pos) {
     let row, col;
     [row, col] = pos;
-  
+
     const tile = this.board[row][col];
-    
+
     return tile
   }
 
@@ -59,19 +59,19 @@ randomPosGenerator() {
     let p_x = pos[0];
     let p_y = pos[1];
 
-    for(let i = 0; i < deltas.length; i++) {
-        let delt = deltas[i];
-        let d_x = delt[0];
-        let d_y = delt[1];
-        let new_pos_x = p_x + d_x ;
-        let new_pos_y = p_y + d_y;
-        let new_pos = [new_pos_x, new_pos_y];
-        if(this.validPos(new_pos)){
-          adjTiles.push(new_pos);
-        }
+    for (let i = 0; i < deltas.length; i++) {
+      let delt = deltas[i];
+      let d_x = delt[0];
+      let d_y = delt[1];
+      let new_pos_x = p_x + d_x;
+      let new_pos_y = p_y + d_y;
+      let new_pos = [new_pos_x, new_pos_y];
+      if (this.validPos(new_pos)) {
+        adjTiles.push(new_pos);
+      }
     }
     return adjTiles
-  }  
+  }
 }
 
 
