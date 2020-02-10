@@ -14,11 +14,12 @@ function spotTest() {
     // console.log(g.adjacentTiles([1, 2]))
     const t = virtualTree.createTree(virtualTree.startTile)
     // console.log(virtualTree)
-    const b = new BFS(virtualTree.startTile, [6, 6])
+    // const b = new BFS(virtualTree.startTile, [6, 6])
+    const d = new DFS(virtualTree.startTile, [6, 6])
     // console.log(g.board);
     // const endTile = b.breadthFirstSearch()
-    const travelPath = b.createPathBack()
-    const visualize = new Visualize (b.orderedTravesal, b.travelPath, 5)
+    const travelPath = d.createPathBack()
+    const visualize = new Visualize (d.orderedTravesal, d.travelPath, 5)
     visualize.visualizeAlgorithm()
     // console.log("ordered traversal is: ", b.orderedTravesal)
 
