@@ -2,6 +2,7 @@
 // start point as a root it creates a tree representin the grid in a bfs manner.
 // N.B. it creates a tree that is not a graph
 // If not start position is given, one is randomly generated
+// const Grid = require('./grid.js');
 class VirtualTree {
   constructor(grid, startPos = null) {
     this.grid = grid;
@@ -40,4 +41,4 @@ class VirtualTree {
   }
 }
 
-// module.exports = VirtualTree;
+module.exports = VirtualTree;
