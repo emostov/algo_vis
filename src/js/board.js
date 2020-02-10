@@ -33,7 +33,7 @@ class Board {
   }
 }
 
-// module.exports = Board;
+module.exports = Board;
 
 // b1 = new Board(30, 75);
 // b1.makeRows();
