@@ -249,10 +249,38 @@ const range_x = new Interval(0,30)
 const range_y = new Interval(0,75)
 p.setObjectiveFunction(function (x) { return -(x[0] * x[0] + x[1] * x[1]); });
 p.init(10, [range_x, range_y])
-for (var i = 0; i < 40; i++) {
-    p.step();
-    console.log(`${i}-th iteration is`)
-    console.log(p._particles[0])
-}
-// console.log(p._particles)
+let positions = []
+let velocities = []
 
+
+for (let i = 0; i < 30; i++) {
+    p.step()
+    // console.log(`position is `)
+    // console.log(roundPos(p._particles[0].position))
+    // console.log(`velocity is`)
+    // console.log(p._particles[0].velocity)
+    // console.log("=================")
+    for(let j = 0; j < 10; j++) {
+        const pos = p._particles[j].position
+        const vel = p._particles[j].velocity
+        positions.push(roundPos(pos))
+        velocities.push(vel)
+    }
+}
+// console.log("these are the positions:", positions)
+// console.log(velocities)
+
+function roundPos(arg) {
+    let x = arg[0]
+    let y = arg[1]
+
+    x = Math.round(x);
+    y = Math.round(y);
+
+    return [x, y];
+}
+
+
+module.exports = Particle;
+module.exports = Optimizer;
+module.exports = Interval;
