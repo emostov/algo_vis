@@ -18,7 +18,7 @@ function spotTest() {
   // const grid = new Grid(30, 75);
   // const virtualTree = new VirtualTree(grid, [15, 37]);
   // console.log(Return)
-  // debugger
+  
   const r = new ReturnP();
   r.returnValue();
   // console.log(g.adjacentTiles([1, 2]))
@@ -28,7 +28,7 @@ function spotTest() {
   // console.log(g.board);
   // const endTile = b.breadthFirstSearch()
   // const travelPath = b.createPathBack();
-  const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 500);
+  const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 50);
   visualize.visualizeAlgorithm();
   // console.log("ordered traversal is: ", b.orderedTravesal)
 
