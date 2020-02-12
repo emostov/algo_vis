@@ -11,7 +11,7 @@ class Visualize {
   }
 
   visualizeAlgorithm() {
-    const colors = ['aquamarine'];
+    const colors = ['aquamarine', 'red', 'blue', 'blue'];
     let i = 0;
     console.log('this is orderedtraversal.length', this.orderedTravesal.length);
     console.log(this.orderedTravesal);

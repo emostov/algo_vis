@@ -5,7 +5,7 @@
 const Board = require('./js/board.js');
 const Grid = require('./js/grid.js');
 const VirtualTree = require('./js/virtualTree.js');
-
+const ReturnP = require('./js/pso.js')
 const Visualize = require('./js/visualize.js');
 const BFS = require('./js/bfs.js');
 
@@ -15,17 +15,20 @@ b1.makeRows();
 b1.addSomeTilesClasses();
 
 function spotTest() {
-  const grid = new Grid(30, 75);
-  const virtualTree = new VirtualTree(grid, [15, 37]);
-
+  // const grid = new Grid(30, 75);
+  // const virtualTree = new VirtualTree(grid, [15, 37]);
+  // console.log(Return)
+  // debugger
+  const r = new ReturnP();
+  r.returnValue();
   // console.log(g.adjacentTiles([1, 2]))
-  const t = virtualTree.createTree(virtualTree.startTile);
+  // const t = virtualTree.createTree(virtualTree.startTile);
   // console.log(virtualTree)
-  const b = new BFS(virtualTree.startTile, [6, 6]);
+  // const b = new BFS(virtualTree.startTile, [6, 6]);
   // console.log(g.board);
   // const endTile = b.breadthFirstSearch()
-  const travelPath = b.createPathBack();
-  const visualize = new Visualize(b.orderedTravesal, b.travelPath, 5);
+  // const travelPath = b.createPathBack();
+  const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 500);
   visualize.visualizeAlgorithm();
   // console.log("ordered traversal is: ", b.orderedTravesal)
 

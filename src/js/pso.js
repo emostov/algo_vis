@@ -244,43 +244,85 @@ class Optimizer {
 
 }
 
-const p = new Optimizer();
-const range_x = new Interval(0,30)
-const range_y = new Interval(0,75)
-p.setObjectiveFunction(function (x) { return -(x[0] * x[0] + x[1] * x[1]); });
-p.init(10, [range_x, range_y])
-let positions = []
-let velocities = []
-
-
-for (let i = 0; i < 30; i++) {
-    p.step()
-    // console.log(`position is `)
-    // console.log(roundPos(p._particles[0].position))
-    // console.log(`velocity is`)
-    // console.log(p._particles[0].velocity)
-    // console.log("=================")
-    for(let j = 0; j < 10; j++) {
-        const pos = p._particles[j].position
-        const vel = p._particles[j].velocity
-        positions.push(roundPos(pos))
-        velocities.push(vel)
+class ReturnP {
+    constructor() {
+        this.p = new Optimizer();
+        this.range_x = new Interval(0, 30);
+        this.range_y = new Interval(0, 75);
+        this.positions = [];
+        this.velocities = [];
+        this.p.setObjectiveFunction(function (x) { return -(x[0] * x[0] + x[1] * x[1]); });
+        this.p.init(10, [this.range_x, this.range_y])
     }
+
+    returnValue() {
+        for (let i = 0; i < 30; i++) {
+            this.p.step()
+            for (let j = 0; j < 10; j++) {
+                let pos = this.p._particles[j].position
+                let vel = this.p._particles[j].velocity
+                this.positions.push(this.roundPos(pos))
+                this.velocities.push(vel)
+            }
+        }
+    }
+    roundPos(arg) {
+        let x = arg[0]
+        let y = arg[1]
+
+        x = this.positon(Math.round(x));
+        y = this.positon(Math.round(y));
+
+        return [x, y];
+    }
+
+    positon(num) {
+        let new_num = num
+        if (num < 0) {
+            new_num = num * -1
+        } else if (num === -0) {
+            num * -1
+        }
+        return new_num
+    }
+
+
 }
-// console.log("these are the positions:", positions)
-// console.log(velocities)
 
-function roundPos(arg) {
-    let x = arg[0]
-    let y = arg[1]
-
-    x = Math.round(x);
-    y = Math.round(y);
-
-    return [x, y];
-}
+// const p = new Optimizer();
+// const range_x = new Interval(0,30)
+// const range_y = new Interval(0,75)
+// p.setObjectiveFunction(function (x) { return -(x[0] * x[0] + x[1] * x[1]); });
+// p.init(10, [range_x, range_y])
+// let positions = []
+// let velocities = []
 
 
-module.exports = Particle;
-module.exports = Optimizer;
-module.exports = Interval;
+// for (let i = 0; i < 30; i++) {
+//     p.step()
+//     for(let j = 0; j < 10; j++) {
+//         const pos = p._particles[j].position
+//         const vel = p._particles[j].velocity
+//         positions.push(roundPos(pos))
+//         velocities.push(vel)
+//     }
+// }
+// // console.log("these are the positions:", positions)
+// // console.log(velocities)
+
+// function roundPos(arg) {
+//     let x = arg[0]
+//     let y = arg[1]
+
+//     x = Math.round(x);
+//     y = Math.round(y);
+
+//     return [x, y];
+// }
+
+// const r = new Return();
+// r.returnValue();
+// console.log(r.positions)
+
+module.exports = ReturnP
+
