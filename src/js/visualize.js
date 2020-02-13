@@ -3,7 +3,7 @@
 
 
 class Visualize {
-  constructor(orderedTravesal, travelPath, timeout) {
+  constructor(orderedTravesal, travelPath, timeout = 50) {
     this.orderedTravesal = orderedTravesal;
     this.travelPath = travelPath;
     this.traversed = [];

@@ -251,6 +251,8 @@ class ReturnP {
         this.range_y = new Interval(0, 75);
         this.positions = [];
         this.velocities = [];
+        this.fitness = [];
+        this.particles = [];
         this.p.setObjectiveFunction(function (x) { return -(x[0] * x[0] + x[1] * x[1]); });
         this.p.init(10, [this.range_x, this.range_y])
     }
@@ -261,8 +263,11 @@ class ReturnP {
             for (let j = 0; j < 10; j++) {
                 let pos = this.p._particles[j].position
                 let vel = this.p._particles[j].velocity
+                let fit = this.p._particles[j].fitness
                 this.positions.push(this.roundPos(pos))
                 this.velocities.push(vel)
+                this.fitness.push(fit)
+                this.particles.push(this.p._particles)
             }
         }
     }
@@ -289,6 +294,9 @@ class ReturnP {
 
 }
 
+// const r = new ReturnP();
+// r.returnValue();
+// console.log(r.particles)
 
 
 module.exports = ReturnP

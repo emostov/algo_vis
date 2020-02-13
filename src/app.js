@@ -8,34 +8,39 @@ const VirtualTree = require('./js/virtualTree.js');
 const ReturnP = require('./js/pso.js')
 const Visualize = require('./js/visualize.js');
 const BFS = require('./js/bfs.js');
+const UserController = require('./js/controllerUI/userController.js')
 
 
 const b1 = new Board(30, 75);
 b1.makeRows();
 b1.addSomeTilesClasses();
+const controller = new UserController()
+
+
 
 function spotTest() {
+
   // const grid = new Grid(30, 75);
   // const virtualTree = new VirtualTree(grid, [15, 37]);
-  // console.log(Return)
   
-  const r = new ReturnP();
-  r.returnValue();
-  // console.log(g.adjacentTiles([1, 2]))
+  //-----------------------------
+  //SWARM ALGORITHM
+  // const r = new ReturnP();
+  // r.returnValue();
+  //-----------------------------
+
   // const t = virtualTree.createTree(virtualTree.startTile);
-  // console.log(virtualTree)
+
   // const b = new BFS(virtualTree.startTile, [6, 6]);
-  // console.log(g.board);
+
   // const endTile = b.breadthFirstSearch()
   // const travelPath = b.createPathBack();
-  const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 50);
-  visualize.visualizeAlgorithm();
-  // console.log("ordered traversal is: ", b.orderedTravesal)
 
-  // console.log("travel path is: ", b.travelPath)
 
-  // console.log("orderd traversal positions: ", orderedTravesal)
+  // const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 50);
+  // visualize.visualizeAlgorithm();
+
 }
 
 
-spotTest();
+// spotTest();
