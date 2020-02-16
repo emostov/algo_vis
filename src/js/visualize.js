@@ -27,7 +27,7 @@ class Visualize {
         const tile = document.getElementById(nextPos);
         // tile.style.backgroundColor = colors[0]
         tile.style.backgroundColor = colors[0];
-        colors.rotateRight(1);
+        // colors.rotateRight(1);
         this.traversed.push(nextPos);
         loopStep();
         i += 1;

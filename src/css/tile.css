@@ -1,12 +1,12 @@
 .start-tile{
-
+    background-color: chartreuse;
 }
 
 .target-tile{
 
 }
 .unvisited-tile{
-    
+    background-color: white;
 }
 .wall-tile{
     background-color: rgb(17, 9, 95);
@@ -17,3 +17,5 @@
 .visited-tile{
     background-color:rgb(31, 82, 190);
 }
+
+

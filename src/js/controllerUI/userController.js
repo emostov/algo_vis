@@ -4,6 +4,8 @@
 class Controller {
 
     constructor() {
+        this.startTile;
+        this.previous;
         this.buttonHash = {
             "Start Tile": true,
             "Target Tile": false,
@@ -37,15 +39,32 @@ class Controller {
 
     changeTiles() {
         let currentButton;
+        
         // debugger
         Object.keys(this.buttonHash).forEach((el) => {
             if(this.buttonHash[el] === true) currentButton = el;
         }) 
 
         if (currentButton === 'Start Tile') {
-            window.addEventListener('mousedown', (el) => {
-                const t = el.currentTarget
-                console.log(t)
+            document.getElementsByClassName('board-container')[0].addEventListener('mousedown', (el) => {
+                let start = el.target;
+                this.previous = document.getElementById(this.startTile)
+                this.startTile = start.id;
+                console.log("this is the start div:", start)
+                console.log("this is the previous div:",this.previous)
+                console.log(this.startTile)
+                if(this.previous !== null) {
+                    this.previous.classList.toggle('start-tile')
+                    
+                } 
+                if (start !== this.start) {
+                    start.classList.toggle('start-tile');
+                    
+                }
+
+
+                // document.getElementById(`${t.id}`)
+                
             });
         };
 

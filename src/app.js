@@ -20,27 +20,28 @@ const controller = new UserController()
 
 function spotTest() {
 
-  // const grid = new Grid(30, 75);
-  // const virtualTree = new VirtualTree(grid, [15, 37]);
+  const grid = new Grid(30, 75);
+  const virtualTree = new VirtualTree(grid, [15, 37]);
   
   //-----------------------------
   //SWARM ALGORITHM
   // const r = new ReturnP();
   // r.returnValue();
+  // const visualize = new Visualize(r.positions, [1, 1], 5);
   //-----------------------------
 
-  // const t = virtualTree.createTree(virtualTree.startTile);
+  //-----------------------------
+  //BFS ALGORITHM
+  const t = virtualTree.createTree(virtualTree.startTile);
+  const b = new BFS(virtualTree.startTile, [6, 6]);
+  const travelPath = b.createPathBack();
+  //------------------------------
 
-  // const b = new BFS(virtualTree.startTile, [6, 6]);
-
-  // const endTile = b.breadthFirstSearch()
-  // const travelPath = b.createPathBack();
-
-
-  // const visualize = new Visualize(r.positions, [[1, 2],[2, 2]], 50);
-  // visualize.visualizeAlgorithm();
+  const visualize = new Visualize(b.orderedTravesal, travelPath, 5);
+  
+  visualize.visualizeAlgorithm();
 
 }
 
 
-// spotTest();
+spotTest();
