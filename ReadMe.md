@@ -34,10 +34,15 @@ In the future all board setup, alogrithm choice, start/end point etc. will be us
 > [link to setup](https://scotch.io/tutorials/linting-and-formatting-with-eslint-in-vs-code)
 
 ### commands to run if do not have node modules
-```
+$ npm install eslint -g
+$ eslint --init
+$ npx webpack
+$ webpack --watch --mode=development
+
+<!-- ```
 $ npm install eslint -g
 $ eslint --init
 $ webpack app.js -o bundle.js --mode=development
-```
+``` -->
 
 
